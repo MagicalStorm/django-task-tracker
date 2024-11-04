@@ -1,0 +1,11 @@
+<!-- tasks/templates/tasks/task_form.html -->
+{% extends 'tasks/base_generic.html' %}
+
+{% block content %}
+  <h2>{% if task %}Edit{% else %}Create{% endif %} Task</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+{% endblock %}

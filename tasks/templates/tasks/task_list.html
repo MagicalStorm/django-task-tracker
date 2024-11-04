@@ -1,0 +1,18 @@
+<!-- tasks/templates/tasks/task_list.html -->
+{% extends 'tasks/base_generic.html' %}
+
+{% block content %}
+  <h2>Task List</h2>
+  <a href="{% url 'task-create' %}">Create New Task</a>
+  <ul>
+    {% for task in tasks %}
+      <li>
+        <strong>{{ task.title }}</strong> - {{ task.description }}
+        <a href="{% url 'task-edit' task.id %}">Edit</a> |
+        <a href="{% url 'task-delete' task.id %}">Delete</a>
+      </li>
+    {% empty %}
+      <li>No tasks available.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
